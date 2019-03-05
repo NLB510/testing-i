@@ -1,8 +1,14 @@
 const enhancer = {
   success: function(item) {
+    if (item.enhancement === 20) {
+      return {...item}
+    }
     const enhancement = item.enhancement + 1;
 
-    return { ...item, enhancement };
+
+    const displayName = enhancement > item.enhancement ? `${enhanceLevels[enhancement]} ${item.displayName}` : item.displayName
+
+    return { ...item, enhancement, displayName };
   },
 
   fail: function(item) {

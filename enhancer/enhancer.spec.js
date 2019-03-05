@@ -6,13 +6,30 @@ describe("enhancer.js", () => {
   describe("Success()", () => {
     it(`should not fail and only increase enhancement by 1`, () => {
       const item = {
+        displayName: "TestName",
         enhancement: 12,
         durability: 10
       };
 
       expect(fail(item)).toEqual(item);
       expect(success(item).enhancement).toEqual(13);
+      expect(success(item).displayName).toEqual('[+13] TestName');
     });
+
+    it('enhancement should not exceed 20/PEN', () => {
+      const item = {
+        displayName: "TestName",
+        enhancement: 20,
+        durability: 10
+      };
+
+      expect(success(item)).toEqual(item)
+      
+
+    })
+
+
+
   });
 
   describe("Fail()", () => {
