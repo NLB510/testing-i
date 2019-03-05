@@ -21,9 +21,9 @@ const enhancer = {
     const enhancement =
       item.enhancement > 16 ? item.enhancement - 1 : item.enhancement;
   
-    // const displayName = enhancement < item.enhancement ? `${enhanceLevels[enhancement]} ${displayName}` : item.displayName
+    const displayName = enhancement < item.enhancement ? `${enhanceLevels[enhancement]} ${item.displayName}` : item.displayName
 
-    return { ...item, durability, enhancement };
+    return { ...item, durability, enhancement, displayName };
   },
 
   repair: function(item) {

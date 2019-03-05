@@ -52,27 +52,28 @@ describe("enhancer.js", () => {
       expect(fail(item)).toEqual(item);
     });
 
-    it('enhancement should decrease by 1 if enhancement is greater than 16', () => {
+    it("enhancement should decrease by 1 if enhancement is greater than 16", () => {
       const item = {
+        enhancement: 17,
+        durability: 18
+      };
+
+      const actual = fail(item);
+
+      expect(actual.enhancement).toEqual(16);
+    });
+
+    it('name should update if enhancement level is decreased', () => {
+      const item = {
+        displayName: "Test",
         enhancement: 17,
         durability: 18
       }
 
       const actual = fail(item)
 
-      expect(actual.enhancement).toEqual(16)
-
+      expect(actual.displayName).toEqual(`[PRI] Test`)
 
     })
-
-
-    // it('name should update if enhancement level is decreased', () => {
-    //   const item = {
-    //     enhancement: 16,
-
-    //   }
-    // })
-
-
   });
 });
