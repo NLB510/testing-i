@@ -3,6 +3,18 @@ const {
 } = require("./enhancer");
 
 describe("enhancer.js", () => {
+  describe("Success()", () => {
+    it(`should increase enhancment by 1`, () => {
+      const item = {
+        enhancement: 12,
+        durability: 10
+      }
+
+      expect(fail(item)).toEqual(item);
+      expect(success(item).enhancement).toEqual(13)
+    });
+  });
+
   describe("Fail()", () => {
     // The durability decreased by 5 if the item's enhancement is btw 0 -15
 
@@ -63,17 +75,16 @@ describe("enhancer.js", () => {
       expect(actual.enhancement).toEqual(16);
     });
 
-    it('name should update if enhancement level is decreased', () => {
+    it("name should update if enhancement level is decreased", () => {
       const item = {
         displayName: "Test",
-        enhancement: 17,
+        enhancement: 20,
         durability: 18
-      }
+      };
 
-      const actual = fail(item)
+      const actual = fail(item);
 
-      expect(actual.displayName).toEqual(`[PRI] Test`)
-
-    })
+      expect(actual.displayName).toEqual(`[TET] Test`);
+    });
   });
 });

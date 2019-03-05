@@ -1,8 +1,8 @@
 const enhancer = {
   success: function(item) {
-    // switch(item.enhancement) {
-    //   case 16
-    // }
+    const enhancement = item.enhancement + 1
+
+    return {...item, enhancement}
   },
 
   fail: function(item) {
