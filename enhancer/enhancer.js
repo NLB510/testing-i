@@ -1,18 +1,17 @@
 const enhancer = {
   success: function(item) {
-    const enhancement = item.enhancement + 1
+    const enhancement = item.enhancement + 1;
 
-    return {...item, enhancement}
+    return { ...item, enhancement };
   },
 
   fail: function(item) {
-
     if (item.enhancement < 15 && item.durability < 25) {
       return { ...item };
     }
 
     if (item.enhancement >= 15 && item.durability < 10) {
-      return {...item};
+      return { ...item };
     }
 
     const durability =
@@ -20,8 +19,11 @@ const enhancer = {
 
     const enhancement =
       item.enhancement > 16 ? item.enhancement - 1 : item.enhancement;
-  
-    const displayName = enhancement < item.enhancement ? `${enhanceLevels[enhancement]} ${item.displayName}` : item.displayName
+
+    const displayName =
+      enhancement < item.enhancement
+        ? `${enhanceLevels[enhancement]} ${item.displayName}`
+        : item.displayName;
 
     return { ...item, durability, enhancement, displayName };
   },
@@ -31,7 +33,6 @@ const enhancer = {
     return item;
   }
 };
-
 
 const enhanceLevels = {
   1: "[+1]",
@@ -55,8 +56,6 @@ const enhanceLevels = {
   19: "[TET]",
   20: "[PEN]"
 };
-
-
 
 module.exports = {
   enhancer

@@ -4,14 +4,14 @@ const {
 
 describe("enhancer.js", () => {
   describe("Success()", () => {
-    it(`should increase enhancment by 1`, () => {
+    it(`should not fail and only increase enhancement by 1`, () => {
       const item = {
         enhancement: 12,
         durability: 10
-      }
+      };
 
       expect(fail(item)).toEqual(item);
-      expect(success(item).enhancement).toEqual(13)
+      expect(success(item).enhancement).toEqual(13);
     });
   });
 
@@ -87,4 +87,17 @@ describe("enhancer.js", () => {
       expect(actual.displayName).toEqual(`[TET] Test`);
     });
   });
+
+  describe('Repair()', () => {
+    it('should repair durability to 100', () => {
+      item = {
+        durability: 30
+      }
+
+      expect(repair(item).durability).toEqual(100)
+
+    })
+  })
+
+
 });
