@@ -14,11 +14,9 @@ describe("enhancer.js", () => {
       };
 
       // Act
-
       const actual = fail(item);
 
       //Assert
-
       expect(actual.durability).toBe(80);
     });
 
@@ -30,22 +28,50 @@ describe("enhancer.js", () => {
       };
 
       // Act
-
       const actual = fail(item);
 
       //Assert
-
       expect(actual.durability).toBe(75);
     });
 
-    it('should not affect item if enhancement is less than 15 and the durability is below 25', () => {
+    it("should not affect item if enhancement is less than 15 and the durability is below 25", () => {
       const item = {
         enhancement: 14,
-        durability: 24,
+        durability: 24
       };
 
       expect(fail(item)).toEqual(item);
     });
+
+    it("should not affect item if enhancement is higher than 15 and the durability is below 10", () => {
+      const item = {
+        enhancement: 16,
+        durability: 9
+      };
+
+      expect(fail(item)).toEqual(item);
+    });
+
+    it('enhancement should decrease by 1 if enhancement is greater than 16', () => {
+      const item = {
+        enhancement: 17,
+        durability: 18
+      }
+
+      const actual = fail(item)
+
+      expect(actual.enhancement).toEqual(16)
+
+
+    })
+
+
+    // it('name should update if enhancement level is decreased', () => {
+    //   const item = {
+    //     enhancement: 16,
+
+    //   }
+    // })
 
 
   });
